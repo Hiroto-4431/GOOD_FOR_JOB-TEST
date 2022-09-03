@@ -57,11 +57,11 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:companies'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'industry_id' => ['required'],
             'president_family_name' => ['required', 'string', 'max:100'],
             'president_last_name' => ['required', 'string', 'max:100'],
-            'president_family_name_read' => ['required', 'string', 'max:100'],
-            'president_last_name_read' => ['required', 'string', 'max:100'],
+            'president_family_name_read' => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u', 'max:100'],
+            'president_last_name_read' => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u', 'max:100'],
+            'industry_id' => ['required'],
             'phone' => ['required', 'numeric', 'digits_between:10,11'],
             'employee' => ['required', 'integer'],
         ]);
@@ -74,6 +74,7 @@ class RegisteredUserController extends Controller
             'president_last_name' => $request->president_last_name,
             'president_family_name_read' => $request->president_family_name_read,
             'president_last_name_read' => $request->president_last_name_read,
+            'industry_id' => $request->industry_id,
             'phone' => $request->phone,
             'employee' => $request->employee,
         ]);

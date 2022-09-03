@@ -36,8 +36,8 @@ class RegisteredUserController extends Controller
         $request->validate([
             'family_name' => ['required', 'string', 'max:100'],
             'last_name' => ['required', 'string', 'max:100'],
-            'family_name_read' => ['required', 'string', 'max:100'],
-            'last_name_read' => ['required', 'string', 'max:100'],
+            'family_name_read' => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u', 'max:100'],
+            'last_name_read' => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);

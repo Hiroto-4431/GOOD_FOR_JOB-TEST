@@ -18,6 +18,14 @@ class Company extends Authenticatable
         'name',
         'email',
         'password',
+        'industry_id',
+        'president_family_name',
+        'president_last_name',
+        'president_family_name_read',
+        'president_last_name_read',
+        'industry_id',
+        'phone',
+        'employee',
     ];
 
     /**
