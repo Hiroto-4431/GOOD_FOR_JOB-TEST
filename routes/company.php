@@ -10,6 +10,7 @@ use App\Http\Controllers\Company\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Company\Auth\RegisteredUserController;
 use App\Http\Controllers\Company\Auth\VerifyEmailController;
 use App\Http\Controllers\PrefectureCityController;
+use App\Http\Controllers\Company\JobController;
 
 
 /*
@@ -23,9 +24,9 @@ use App\Http\Controllers\PrefectureCityController;
 |
 */
 
-Route::get('/', function () {
-  return view('company.welcome');
-});
+// Route::get('/', function () {
+//   return view('company.welcome');
+// });
 
 Route::get('/dashboard', function () {
   return view('company.dashboard');
@@ -77,4 +78,6 @@ Route::middleware('auth:companies')->group(function () {
 
   Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');
+
+  Route::resource('job', JobController::class);
 });

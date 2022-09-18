@@ -30,13 +30,17 @@
                     :active="request()->routeIs('company.dashboard')">
                     {{ __('ホーム') }}
                 </x-responsive-nav-link>
-                {{-- <x-responsive-nav-link class="text-white bg-transparent border-yellow-500 mt-8" :href="route('company.job.index')"
+                <x-responsive-nav-link class="text-white bg-transparent border-yellow-500 mt-8" :href="route('company.job.index')"
                     :active="request()->routeIs('company.job.index')">
                     {{ __('求人一覧') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link class="text-white bg-transparent border-yellow-500 mt-4" :href="route('company.job.create')"
                     :active="request()->routeIs('company.job.create')">
                     {{ __('求人作成') }}
+                </x-responsive-nav-link>
+                {{-- <x-responsive-nav-link class="text-white bg-transparent border-yellow-500 mt-4" :href="route('company.job.edit')"
+                    :active="request()->routeIs('company.job.edit')">
+                    {{ __('求人編集') }}
                 </x-responsive-nav-link> --}}
             </div>
         </div>

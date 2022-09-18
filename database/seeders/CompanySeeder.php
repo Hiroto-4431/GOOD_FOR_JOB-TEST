@@ -20,7 +20,7 @@ class CompanySeeder extends Seeder
             [
                 'name' => 'テスト1株式会社',
                 'email' => 'test1@test.com',
-                'password' => 'test1234',
+                'password' => bcrypt('test1234'),
                 'industry_id' => 25,
                 'president_family_name' => '近藤',
                 'president_last_name' => '宏',
@@ -32,7 +32,7 @@ class CompanySeeder extends Seeder
             [
                 'name' => 'テスト2株式会社',
                 'email' => 'test2@test.com',
-                'password' => 'test1234',
+                'password' => bcrypt('test1234'),
                 'industry_id' => 15,
                 'president_family_name' => '渡辺',
                 'president_last_name' => '徹夜',
@@ -44,7 +44,7 @@ class CompanySeeder extends Seeder
             [
                 'name' => 'テスト3株式会社',
                 'email' => 'test3@test.com',
-                'password' => 'test1234',
+                'password' => bcrypt('test1234'),
                 'industry_id' => 2,
                 'president_family_name' => '山口',
                 'president_last_name' => '猛',

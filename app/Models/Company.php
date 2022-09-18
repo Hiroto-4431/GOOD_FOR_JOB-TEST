@@ -47,6 +47,11 @@ class Company extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function job()
+    {
+        return $this->hasMany(Job::class);
+    }
+
     public function industry()
     {
         return $this->belongsTo(Industry::class);

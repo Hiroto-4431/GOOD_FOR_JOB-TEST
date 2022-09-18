@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
                 'family_name_read' => 'ハシモト',
                 'last_name_read' => 'カズオ',
                 'email' => 'test1@test.com',
-                'password' => 'test1234',
+                'password' => bcrypt('test1234'),
                 'phone' => '07060570478',
             ],
             [
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
                 'family_name_read' => 'ナカヤマ',
                 'last_name_read' => 'タツヤ',
                 'email' => 'test2@test.com',
-                'password' => 'test1234',
+                'password' => bcrypt('test1234'),
                 'phone' => '07094280848',
             ],
             [
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
                 'family_name_read' => 'ウエダ',
                 'last_name_read' => 'タカシ',
                 'email' => 'test3@test.com',
-                'password' => 'test1234',
+                'password' => bcrypt('test1234'),
                 'phone' => '07092781918',
             ],
         ]);

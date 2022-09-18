@@ -23,7 +23,7 @@ class AdminSeeder extends Seeder
                 'family_name_read' => 'カトウ',
                 'last_name_read' => 'マコト',
                 'email' => 'test1@test.com',
-                'password' => 'test1234',
+                'password' => bcrypt('test1234'),
             ],
             [
                 'family_name' => '伊藤',
@@ -31,7 +31,7 @@ class AdminSeeder extends Seeder
                 'family_name_read' => 'イトウ',
                 'last_name_read' => 'マサキ',
                 'email' => 'test2@test.com',
-                'password' => 'test1234',
+                'password' => bcrypt('test1234'),
             ],
             [
                 'family_name' => '和田',
@@ -39,7 +39,7 @@ class AdminSeeder extends Seeder
                 'family_name_read' => 'ワダ',
                 'last_name_read' => 'タロウ',
                 'email' => 'test3@test.com',
-                'password' => 'test1234',
+                'password' => bcrypt('test1234'),
             ],
         ]);
     }
