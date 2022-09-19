@@ -3,7 +3,7 @@
     {{-- タイトル --}}
     <x-slot name="title">
         <h1 class="text-3xl">
-            タイトル
+            ダッシュボード
         </h1>
     </x-slot>
     {{-- コンテンツ --}}
