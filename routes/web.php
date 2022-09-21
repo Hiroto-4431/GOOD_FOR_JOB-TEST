@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\Admin\JobController;
+// use App\Http\Controllers\Admin\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+
+// Route::middleware('auth:users')->group(function () {
+//     Route::resource('company', CompanyController::class);
+//     Route::resource('job', JobController::class);
+// });
