@@ -1,17 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Company;
-use App\Models\EmploymentType;
-use App\Models\Job;
-use App\Models\Entry;
-use App\Models\Occupation;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Entry;
 
-class JobController extends Controller
+class EntryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,17 +16,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::all();
-        $companies = Company::all();
-        $occupations = Occupation::all();
-        return view(
-            'user.job.index',
-            [
-                'jobs' => $jobs,
-                'companies' => $companies,
-                'occupations' => $occupations,
-            ]
-        );
+        //
     }
 
     /**
@@ -51,7 +37,15 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $userId = Auth::id();
+        Entry::create([
+            'userId' => $userId,
+            'jobId' => $request->jobId,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('user.job.index');
     }
 
     /**
@@ -62,19 +56,7 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        $job = Job::findOrFail($id);
-        $occupations = Occupation::all();
-        $companies = Company::all();
-        $employments = EmploymentType::all();
-        return view(
-            'user.job.show',
-            compact(
-                'job',
-                'occupations',
-                'companies',
-                'employments',
-            )
-        );
+        //
     }
 
     /**
@@ -109,29 +91,5 @@ class JobController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function entry($id)
-    {
-        $entry = new Entry;
-        $entry->job_id = $id;
-        $entry->user_id = Auth::id();
-        $entry->status = 1;
-
-        $entry->save();
-
-
-
-        // $input = $request->all();
-        // $user_id = Auth::id();
-        // $job_id = Job::select('id');
-        // $job = Job::findOrFail($id);
-        // Entry::create([
-        //     'user_id' => $user_id,
-        //     'job_id' => $job->id,
-        //     // 'status' => 1,
-        // ]);
-
-        return redirect()->route('user.job.index');
     }
 }

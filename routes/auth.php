@@ -9,8 +9,6 @@ use App\Http\Controllers\User\Auth\NewPasswordController;
 use App\Http\Controllers\User\Auth\PasswordResetLinkController;
 use App\Http\Controllers\User\Auth\RegisteredUserController;
 use App\Http\Controllers\User\Auth\VerifyEmailController;
-use App\Http\Controllers\User\JobController;
-use App\Http\Controllers\User\CompanyController;
 
 
 Route::middleware('guest')->group(function () {
@@ -56,6 +54,4 @@ Route::middleware('auth:users')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
-    Route::resource('company', CompanyController::class);
-    Route::resource('job', JobController::class);
 });

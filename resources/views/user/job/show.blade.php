@@ -89,6 +89,13 @@
                 </tr>
             </tbody>
         </table>
+        <form class="block mt-20 bg-yellow-400" action="{{ route('user.job.entry', ['job' => $job->id]) }}"
+            method="POST">
+            @csrf
+            <button
+                class="block mx-auto text-block bg-yellow-500 border-1 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">エントリーする</button>
+        </form>
+
         {{-- <div class="">
             @if (empty($company->image))
                 <img src="{{ asset('images/NoImage.png') }}" alt="">
