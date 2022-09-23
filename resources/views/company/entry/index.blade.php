@@ -44,16 +44,19 @@
                             </p>
                         </td>
                         <td class="block text-left p-4 w-4/12">
-                            <button onclick="location.href='{{ route('company.entry.edit', ['entry' => $entry->id]) }}'"
-                                class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-base text-white uppercase tracking-widest hover:bg-red-400 active:bg-red-600 focus:outline-none focus:border-red-600 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">メッセージ</button>
-                            <form id="delete_{{ $entry->id }}"
-                                action="{{ route('company.entry.destroy', ['entry' => $entry->id]) }}" method="POST"
+                            @foreach ($messages as $message)
+                                <button
+                                    onclick="location.href='{{ route('message.show', ['message' => $message->id]) }}'"
+                                    class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-base text-white uppercase tracking-widest hover:bg-red-400 active:bg-red-600 focus:outline-none focus:border-red-600 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">メッセージ</button>
+                            @endforeach
+                            {{-- <form id="delete_{{ $entry->id }}"
+                                action="{{ route('entry.destroy', ['entry' => $entry->id]) }}" method="POST"
                                 class="inline">
                                 @csrf
                                 @method('delete')
                                 <a href="#" data-id="{{ $entry->id }}" onclick="deletePost(this)"
                                     class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-base text-white uppercase tracking-widest hover:bg-blue-400 active:bg-blue-600 focus:outline-none focus:border-red-600 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">削除</a>
-                            </form>
+                            </form> --}}
                         </td>
                     </tr>
                 @endforeach

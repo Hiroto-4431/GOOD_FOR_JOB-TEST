@@ -42,10 +42,11 @@
                     :active="request()->routeIs('company.entry.index')">
                     {{ __('応募者一覧') }}
                 </x-responsive-nav-link>
-                {{-- <x-responsive-nav-link class="text-white bg-transparent border-yellow-500 mt-4" :href="route('company.job.edit')"
-                    :active="request()->routeIs('company.job.edit')">
-                    {{ __('求人編集') }}
+                {{-- <x-responsive-nav-link class="text-white bg-transparent border-yellow-500 mt-8" :href="route('message.index')"
+                    :active="request()->routeIs('message.index')">
+                    {{ __('メッセージ') }}
                 </x-responsive-nav-link> --}}
+                {{-- <a href="{{ route('message.index') }}">メッセージ</a> --}}
             </div>
         </div>
 

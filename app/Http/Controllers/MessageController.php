@@ -1,16 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Company;
+namespace App\Http\Controllers\Message;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Entry;
-use App\Models\User;
-use App\Models\Job;
 use App\Models\Message;
+use Illuminate\Http\Request;
 
-class EntryController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,16 +15,11 @@ class EntryController extends Controller
      */
     public function index()
     {
-        $entries = Entry::all();
-        $users = User::all();
-        $jobs = Job::all();
         $messages = Message::all();
+        dd('aaa');
         return view(
-            'company.entry.index',
+            'message.index',
             [
-                'entries' => $entries,
-                'users' => $users,
-                'jobs' => $jobs,
                 'messages' => $messages,
             ]
         );
@@ -52,15 +43,7 @@ class EntryController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        $user_id = Auth::id();
-        Entry::create([
-            'user_id' => $user_id,
-            'job_id' => $request->job_id,
-            'status' => $request->status,
-        ]);
-
-        return redirect()->route('user.job.index');
+        //
     }
 
     /**

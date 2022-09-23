@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\JobController;
 use App\Http\Controllers\User\CompanyController;
 
+use App\Http\Controllers\MessageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,3 +35,4 @@ Route::middleware('auth:users')->group(function () {
         Route::post('/{job}/entry', [JobController::class, 'entry'])->name('entry');
     });
 });
+Route::get('/message/index', [MessageController::class, 'index'])->name('message.index');
