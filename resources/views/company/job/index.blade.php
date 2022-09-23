@@ -57,7 +57,15 @@
                             </p>
                         </td>
                         <td class="text-center p-4 w-2/12">
-                            <p>(0)</p>
+                            <p>
+                                {{-- {{ $test }} --}}
+
+                                {{-- @foreach ($entries as $entry)
+                                    @if ($entry->job_id === $job->id)
+                                        {{ $entry }}
+                                    @endif
+                                @endforeach --}}
+                            </p>
                         </td>
                         <td class="block text-left p-4 w-3/12">
                             <button onclick="location.href='{{ route('company.job.edit', ['job' => $job->id]) }}'"

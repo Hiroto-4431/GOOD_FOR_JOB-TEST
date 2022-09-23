@@ -7,6 +7,7 @@ use App\Models\EmploymentType;
 use App\Models\Occupation;
 use App\Models\Feature;
 use App\Models\Job;
+use App\Models\Entry;
 use App\Models\Company;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Hash;
@@ -45,11 +46,17 @@ class JobController extends Controller
     {
         $jobs = Job::select('id', 'title', 'company_id', 'message', 'occupation_id', 'employment_type_id', 'access', 'salary', 'feature_id', 'job_description', 'status')->paginate(3);
         $occupations = Occupation::all();
+        // $entries = Entry::all();
+        $entry_count = Entry::where('job_id');
+        $test = Job::where('id');
         return view(
             'company.job.index',
             [
                 'jobs' => $jobs,
                 'occupations' => $occupations,
+                // 'entries' => $entries,
+                'entry_count' => $entry_count,
+                // 'test' => $test
             ]
         );
     }

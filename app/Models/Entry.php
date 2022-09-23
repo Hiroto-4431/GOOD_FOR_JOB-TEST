@@ -12,4 +12,9 @@ class Entry extends Model
         'user_id',
         'job_id'
     ];
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
 }
