@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Entry;
+use App\Models\User;
+use App\Models\Job;
 
 class EntryController extends Controller
 {
@@ -16,7 +18,17 @@ class EntryController extends Controller
      */
     public function index()
     {
-        //
+        $entries = Entry::all();
+        $users = User::all();
+        $jobs = Job::all();
+        return view(
+            'company.entry.index',
+            [
+                'entries' => $entries,
+                'users' => $users,
+                'jobs' => $jobs,
+            ]
+        );
     }
 
     /**
@@ -38,10 +50,10 @@ class EntryController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $userId = Auth::id();
+        $user_id = Auth::id();
         Entry::create([
-            'userId' => $userId,
-            'jobId' => $request->jobId,
+            'user_id' => $user_id,
+            'job_id' => $request->job_id,
             'status' => $request->status,
         ]);
 

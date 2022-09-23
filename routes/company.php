@@ -11,6 +11,7 @@ use App\Http\Controllers\Company\Auth\RegisteredUserController;
 use App\Http\Controllers\Company\Auth\VerifyEmailController;
 use App\Http\Controllers\PrefectureCityController;
 use App\Http\Controllers\Company\JobController;
+use App\Http\Controllers\Company\EntryController;
 
 
 /*
@@ -80,4 +81,5 @@ Route::middleware('auth:companies')->group(function () {
     ->name('logout');
 
   Route::resource('job', JobController::class);
+  Route::resource('entry', EntryController::class);
 });

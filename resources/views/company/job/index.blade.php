@@ -60,6 +60,10 @@
                             <p>
                                 {{-- {{ $test }} --}}
 
+                                {{-- @if ($null === 1)
+                                    {{ $entry_count }}
+                                @endif --}}
+
                                 {{-- @foreach ($entries as $entry)
                                     @if ($entry->job_id === $job->id)
                                         {{ $entry }}

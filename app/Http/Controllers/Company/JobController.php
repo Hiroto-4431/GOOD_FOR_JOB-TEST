@@ -47,15 +47,16 @@ class JobController extends Controller
         $jobs = Job::select('id', 'title', 'company_id', 'message', 'occupation_id', 'employment_type_id', 'access', 'salary', 'feature_id', 'job_description', 'status')->paginate(3);
         $occupations = Occupation::all();
         // $entries = Entry::all();
-        $entry_count = Entry::where('job_id');
-        $test = Job::where('id');
+        $null = null;
+        // $entry_count = Entry::where('job_id', $null)->count();
+        // $test = Job::where('id');
         return view(
             'company.job.index',
             [
                 'jobs' => $jobs,
                 'occupations' => $occupations,
                 // 'entries' => $entries,
-                'entry_count' => $entry_count,
+                // 'entry_count' => $entry_count,
                 // 'test' => $test
             ]
         );
