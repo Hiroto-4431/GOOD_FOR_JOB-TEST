@@ -45,9 +45,10 @@
                         </td>
                         <td class="block text-left p-4 w-4/12">
                             @foreach ($messages as $message)
-                                <button
+                                <a href="{{ route('company.message.index') }}">メッセージ</a>
+                                {{-- <button
                                     onclick="location.href='{{ route('message.show', ['message' => $message->id]) }}'"
-                                    class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-base text-white uppercase tracking-widest hover:bg-red-400 active:bg-red-600 focus:outline-none focus:border-red-600 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">メッセージ</button>
+                                    class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-base text-white uppercase tracking-widest hover:bg-red-400 active:bg-red-600 focus:outline-none focus:border-red-600 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">メッセージ</button> --}}
                             @endforeach
                             {{-- <form id="delete_{{ $entry->id }}"
                                 action="{{ route('entry.destroy', ['entry' => $entry->id]) }}" method="POST"

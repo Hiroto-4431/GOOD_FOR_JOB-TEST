@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Message;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Message;
 use Illuminate\Http\Request;
+use App\Models\Message;
+use App\Models\Entry;
+use Illuminate\Support\Str;
 
 class MessageController extends Controller
 {
@@ -16,13 +17,9 @@ class MessageController extends Controller
     public function index()
     {
         $messages = Message::all();
-        dd('aaa');
-        return view(
-            'message.index',
-            [
-                'messages' => $messages,
-            ]
-        );
+        return view('message/index', [
+            'messages' => $messages,
+        ]);
     }
 
     /**
@@ -43,7 +40,24 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $input = $request->all();
+        // $user_identifier = $request->session()->get('user_identifier', Str::random(20));
+        // session(['user_identifier' => $user_identifier]);
+        // $length = Message::all()->count();
+        // $display = 5;
+        // $messages = Message::offset($length - $display)->limit($display)->get();
+        // Message::create([
+        //     'content' => $request->content,
+        //     // 'entry_id' => $request->entry_id,
+        //     // 'send_by' => $request->send_by,
+        // ]);
+        // return redirect()->route(
+        //     'user.message.show',
+        //     compact([
+        //         'messages',
+        //         'user_identifier'
+        //     ])
+        // );
     }
 
     /**
@@ -52,9 +66,40 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $user_identifier = $request->session()->get('user_identifier', Str::random(20));
+        session(['user_identifier' => $user_identifier]);
+        $length = Message::all()->count();
+        $display = 5;
+        $messages = Message::offset($length - $display)->limit($display)->get();
+        $entry = Entry::findOrFail($id);
+        // Message::create([
+        //     'user_identifier' => $request->user_identifier,
+        //     'content' => $request->content,
+        //     //     // 'entry_id' => $request->entry_id,
+        //     //     // 'send_by' => $request->send_by,
+        // ]);
+        return view(
+            'message.show',
+            compact([
+                'messages',
+                'user_identifier',
+                'entry'
+            ])
+        );
+
+        // $messages = Message::all();
+        // $entry = Entry::findOrFail($id);
+        // $messages = Message::all();
+        // return view(
+        //     'message/show',
+        //     compact(
+        //         'entry',
+        //         'messages'
+        //     )
+        // );
     }
 
     /**

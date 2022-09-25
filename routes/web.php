@@ -34,5 +34,6 @@ Route::middleware('auth:users')->group(function () {
         Route::get('/{job}', [JobController::class, 'show'])->name('show');
         Route::post('/{job}/entry', [JobController::class, 'entry'])->name('entry');
     });
+
+    Route::resource('/message', MessageController::class);
 });
-Route::get('/message/index', [MessageController::class, 'index'])->name('message.index');
