@@ -15,21 +15,21 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->comment('会社名');
-            $table->string('email')->unique()->comment('メールアドレス');
+            $table->string('name');
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignId('industry_id')->constrained()->comment('業界カテゴリ');
-            $table->string('president_family_name')->comment('代表者(姓)');
-            $table->string('president_last_name')->comment('代表者(名)');
-            $table->string('president_family_name_read')->comment('代表者(セイ)');
-            $table->string('president_last_name_read')->comment('代表者(メイ)');
-            // $table->foreignId('prefecture_id')->constrained()->comment('都道府県');
-            // $table->foreignId('city_id')->constrained()->comment('市区町村');
-            // $table->foreignId('address_id')->constrained()->comment('町名番地');
-            // $table->string('image')->comment('ロゴ');
-            $table->ipAddress('phone')->comment('電話番号');
-            $table->integer('employee')->comment('従業員数');
+            $table->foreignId('industry_id')->constrained();
+            $table->string('president_family_name');
+            $table->string('president_last_name');
+            $table->string('president_family_name_read');
+            $table->string('president_last_name_read');
+            // $table->foreignId('prefecture_id')->constrained();
+            // $table->foreignId('city_id')->constrained();
+            // $table->foreignId('address_id')->constrained();
+            // $table->string('image');
+            $table->ipAddress('phone');
+            $table->integer('employee');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -58,17 +58,7 @@
                         </td>
                         <td class="text-center p-4 w-2/12">
                             <p>
-                                {{-- {{ $test }} --}}
-
-                                {{-- @if ($null === 1)
-                                    {{ $entry_count }}
-                                @endif --}}
-
-                                {{-- @foreach ($entries as $entry)
-                                    @if ($entry->job_id === $job->id)
-                                        {{ $entry }}
-                                    @endif
-                                @endforeach --}}
+                                {{ $entry_count }}
                             </p>
                         </td>
                         <td class="block text-left p-4 w-3/12">

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('features', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->comment('特徴');
+            $table->string('name');
             $table->timestamps();
         });
     }

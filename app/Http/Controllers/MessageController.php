@@ -75,12 +75,7 @@ class MessageController extends Controller
         $display = 5;
         $messages = Message::offset($length - $display)->limit($display)->get();
         $entry = Entry::findOrFail($id);
-        // Message::create([
-        //     'user_identifier' => $request->user_identifier,
-        //     'content' => $request->content,
-        //     //     // 'entry_id' => $request->entry_id,
-        //     //     // 'send_by' => $request->send_by,
-        // ]);
+
         return view(
             'message.show',
             compact([
@@ -89,17 +84,6 @@ class MessageController extends Controller
                 'entry'
             ])
         );
-
-        // $messages = Message::all();
-        // $entry = Entry::findOrFail($id);
-        // $messages = Message::all();
-        // return view(
-        //     'message/show',
-        //     compact(
-        //         'entry',
-        //         'messages'
-        //     )
-        // );
     }
 
     /**

@@ -57,10 +57,11 @@
         </div>
 
         {{-- イメージ --}}
-        {{-- <div class="mt-4 flex items-center">
+        <div class="mt-4 flex items-center">
             <x-label for="image" :value="__('イメージ')" class="w-1/4 text-black text-base" />
-            <x-input id="image" class="block mt-1 w-3/4" type="file" name="image" required />
-        </div> --}}
+            <x-input id="image" accept="image/png, image/jpeg, image/jpg" class="block mt-1 w-3/4" type="file"
+                name="image" />
+        </div>
 
         {{-- アクセス --}}
         <div class="mt-4 flex items-center">

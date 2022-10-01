@@ -60,7 +60,7 @@ class EntryController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->route('user.job.index');
+        return redirect()->route('user.job.index')->with('message', 'エントリーされました');
     }
 
     /**

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('industries', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->comment('業界名');
+            $table->string('name');
             $table->timestamps();
         });
     }

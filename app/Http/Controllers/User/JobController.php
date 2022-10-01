@@ -113,13 +113,13 @@ class JobController extends Controller
 
     public function entry($id)
     {
+        $job = Job::findOrFail($id);
         $entry = new Entry;
         $entry->job_id = $id;
         $entry->user_id = Auth::id();
         $entry->status = 1;
 
         $entry->save();
-
 
 
         // $input = $request->all();
@@ -132,6 +132,6 @@ class JobController extends Controller
         //     // 'status' => 1,
         // ]);
 
-        return redirect()->route('user.job.index');
+        return redirect()->route('user.job.show', ['job' => $job->id])->with('message', 'エントリーされました。');
     }
 }

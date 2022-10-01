@@ -28,8 +28,8 @@
                 @method('PUT')
                 @csrf
                 <input type="hidden" name="user_identifier" value={{ $user_identifier }}>
-                <input name="content" type="textarea" class="w-9/12 p-2">
-                <input type="submit" class="w-2/12 p-2 border-2 border-solid border-black">
+                <input name="content" type="textarea" class="w-9/12 p-2" required>
+                <input type="submit" class="w-2/12 p-2 border-2 border-solid border-black cursor-pointer">
             </form>
         </div>
     </div>

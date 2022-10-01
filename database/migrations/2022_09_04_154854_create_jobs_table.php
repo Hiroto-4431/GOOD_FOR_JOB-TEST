@@ -15,24 +15,23 @@ return new class extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->comment('タイトル');
+            $table->string('title');
             $table->foreignId('company_id')
                 ->constrained()
                 ->onUpdate('cascade')
-                ->onDelete('cascade')
-                ->comment('会社');
-            $table->text('message')->comment('メッセージ');
-            $table->foreignId('occupation_id')->constrained()->comment('募集職種');
-            $table->foreignId('employment_type_id')->constrained()->comment('雇用形態');
-            // $table->string('image')->comment('イメージ');
-            // $table->foreignId('prefecture_id')->constrained()->comment('都道府県');
-            // $table->foreignId('city_id')->constrained()->comment('市区町村');
-            // $table->foreignId('address_id')->constrained()->comment('町名番地');
-            $table->text('access')->comment('アクセス');
-            $table->text('salary')->comment('給与');
-            $table->foreignId('feature_id')->constrained()->comment('特徴');
-            $table->text('job_description')->comment('仕事内容');
-            $table->boolean('status')->comment('公開設定');
+                ->onDelete('cascade');
+            $table->text('message');
+            $table->foreignId('occupation_id')->constrained();
+            $table->foreignId('employment_type_id')->constrained();
+            $table->string('image')->nullable();
+            // $table->foreignId('prefecture_id')->constrained();
+            // $table->foreignId('city_id')->constrained();
+            // $table->foreignId('address_id')->constrained();
+            $table->text('access');
+            $table->text('salary');
+            $table->foreignId('feature_id')->constrained();
+            $table->text('job_description');
+            $table->boolean('status');
             $table->timestamps();
             $table->softDeletes();
         });

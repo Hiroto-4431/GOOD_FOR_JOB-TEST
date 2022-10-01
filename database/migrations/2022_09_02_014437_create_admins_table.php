@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('family_name')->comment('姓');
-            $table->string('last_name')->comment('名');
-            $table->string('family_name_read')->comment('セイ');
-            $table->string('last_name_read')->comment('メイ');
-            $table->string('email')->unique()->comment('メールアドレス');;
+            $table->string('family_name');
+            $table->string('last_name');
+            $table->string('family_name_read');
+            $table->string('last_name_read');
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

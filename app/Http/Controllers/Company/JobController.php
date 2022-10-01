@@ -45,20 +45,19 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::select('id', 'title', 'company_id', 'message', 'occupation_id', 'employment_type_id', 'access', 'salary', 'feature_id', 'job_description', 'status')->paginate(3);
+
+
         $occupations = Occupation::all();
         // $entries = Entry::all();
-        $null = null;
-        // $entry_count = Entry::where('job_id', $null)->count();
-        // $test = Job::where('id');
+        $entry_count = Entry::where('job_id', 1)->count();
+        // dd($job);
         return view(
             'company.job.index',
-            [
-                'jobs' => $jobs,
-                'occupations' => $occupations,
-                // 'entries' => $entries,
-                // 'entry_count' => $entry_count,
-                // 'test' => $test
-            ]
+            compact(
+                'jobs',
+                'occupations',
+                'entry_count'
+            )
         );
     }
 
@@ -106,26 +105,11 @@ class JobController extends Controller
         ]);
 
         $companyId = Auth::id();
-
-        Job::create([
-            'company_id' => $companyId,
-            'title' => $request->title,
-            'message' => $request->message,
-            'occupation_id' => $request->occupation_id,
-            'employment_type_id' => $request->employment_type_id,
-            'image' => '',
-            'access' => $request->access,
-            'salary' => $request->salary,
-            // 'feature_id' => $request->feature_id()->sync($input['feature_id']),
-            'feature_id' => 1,
-            'job_description' => $request->job_description,
-            'status' => $request->status,
-        ]);
-
         // $imageFile = $request->image;
         // if (!is_null($imageFile) && $imageFile->isValid()) {
         // ↓リサイズなしの場合
         // Storage::putFile('public/job', $imageFile);
+
         // ↓リサイズありの場合
         // $fileName = uniqid(rand() . '_');
         // $extension = $imageFile->extension();
@@ -135,6 +119,24 @@ class JobController extends Controller
 
         // Storage::put('public/job/', $fileNameToStore, $resizedImage);
         // }
+        $document = $request->image;
+        $document->store('public');
+        Job::create([
+            'company_id' => $companyId,
+            'title' => $request->title,
+            'message' => $request->message,
+            'occupation_id' => $request->occupation_id,
+            'employment_type_id' => $request->employment_type_id,
+            'image' => $request->image,
+            'access' => $request->access,
+            'salary' => $request->salary,
+            // 'feature_id' => $request->feature_id()->sync($input['feature_id']),
+            'feature_id' => 1,
+            'job_description' => $request->job_description,
+            'status' => $request->status,
+        ]);
+
+
 
 
         return redirect()

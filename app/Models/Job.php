@@ -21,7 +21,7 @@ class Job extends Model
         'message',
         'occupation_id',
         'employment_type_id',
-        // 'image',
+        'image',
         'access',
         'salary',
         'feature_id',

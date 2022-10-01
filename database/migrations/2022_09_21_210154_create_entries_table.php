@@ -18,13 +18,11 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('cascade')
-                ->onDelete('cascade')
-                ->comment('ユーザーid');
+                ->onDelete('cascade');
             $table->foreignId('job_id')
                 ->constrained()
                 ->onUpdate('cascade')
-                ->onDelete('cascade')
-                ->comment('求人id');
+                ->onDelete('cascade');
             $table->string('status');
             $table->timestamps();
         });

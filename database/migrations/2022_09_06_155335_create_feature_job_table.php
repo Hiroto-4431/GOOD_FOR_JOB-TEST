@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('feature_job', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('job_id')->constrained()->onDelete('cascade')->comment('求人');
-            $table->foreignId('feature_id')->constrained()->onDelete('cascade')->comment('特徴');
+            $table->foreignId('job_id')->constrained()->onDelete('cascade');
+            $table->foreignId('feature_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
