@@ -69,19 +69,11 @@ class MessageController extends Controller
     public function show(Request $request, $id)
     {
         $input = $request->all();
-        $user_identifier = $request->session()->get('user_identifier', Str::random(20));
-        session(['user_identifier' => $user_identifier]);
-        $length = Message::all()->count();
-        $display = 5;
-        $messages = Message::offset($length - $display)->limit($display)->get();
-        $entry = Entry::findOrFail($id);
 
         return view(
             'message.show',
             compact([
-                'messages',
-                'user_identifier',
-                'entry'
+                'content' => $request->content,
             ])
         );
     }
