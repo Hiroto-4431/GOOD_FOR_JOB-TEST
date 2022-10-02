@@ -44,7 +44,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::select('id', 'title', 'company_id', 'message', 'occupation_id', 'employment_type_id', 'access', 'salary', 'feature_id', 'job_description', 'status')->paginate(3);
+        $jobs = Job::select('id', 'title', 'company_id', 'message', 'occupation_id', 'employment_type_id', 'access', 'salary', 'job_description', 'status')->paginate(3);
 
 
         $occupations = Occupation::all();
@@ -77,7 +77,7 @@ class JobController extends Controller
             [
                 'occupations' => $occupations,
                 'employment_types' => $employment_types,
-                // 'features' => $features,
+                'features' => $features,
                 'jobs' => $jobs,
             ]
         );
@@ -120,7 +120,7 @@ class JobController extends Controller
         // Storage::put('public/job/', $fileNameToStore, $resizedImage);
         // }
         $document = $request->image;
-        $document->store('public');
+        // $document->store('public');
         Job::create([
             'company_id' => $companyId,
             'title' => $request->title,
@@ -130,11 +130,12 @@ class JobController extends Controller
             'image' => $request->image,
             'access' => $request->access,
             'salary' => $request->salary,
-            // 'feature_id' => $request->feature_id()->sync($input['feature_id']),
-            'feature_id' => 1,
+            // 'feature_id' => 1,
             'job_description' => $request->job_description,
             'status' => $request->status,
         ]);
+        $job = new Job;
+        $job->features()->sync($request->feature_ids);
 
 
 
@@ -173,7 +174,7 @@ class JobController extends Controller
             compact(
                 'occupations',
                 'employment_types',
-                // 'features'
+                // 'features',
                 // 'jobs',
                 'job'
             )

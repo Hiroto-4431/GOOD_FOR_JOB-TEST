@@ -24,7 +24,7 @@ class Job extends Model
         'image',
         'access',
         'salary',
-        'feature_id',
+        // 'feature_id',
         'job_description',
         'status'
     ];

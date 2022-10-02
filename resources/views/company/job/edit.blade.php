@@ -33,10 +33,14 @@
             <x-label for="occupation_id" :value="__('募集職種')" class="w-1/4 text-black text-base" />
             <select name="occupation_id" id="occupation_id"
                 class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-3/4">
-                {{-- <option class="hidden" disabled>募集職種</option> --}}
+
                 @foreach ($occupations as $occupation)
-                    <option value="{{ $occupation->id }}" @if (old('occupation_id') == $occupation) selected @endif>
-                        {{ $occupation->name }}</option>
+                    @if ($job->occupation_id == $occupation->id)
+                        <option value="{{ $job->occuaption_id }}" selected>{{ $occupation->name }}</option>
+                    @else
+                        <option value="{{ $occupation->id }}">
+                            {{ $occupation->name }}</option>
+                    @endif
                 @endforeach
             </select>
         </div>
@@ -47,10 +51,19 @@
             <select name="employment_type_id" id="employment_type_id"
                 class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-3/4">
                 {{-- <option class="hidden" selected disabled>雇用形態</option> --}}
-                @foreach ($employment_types as $employment_type)
+                {{-- @foreach ($employment_types as $employment_type)
                     <option value="{{ $employment_type->id }}"
                         {{ old('employment_type') == $employment_type->id ? 'selected' : '' }}>
                         {{ $employment_type->name }}</option>
+                @endforeach --}}
+
+                @foreach ($employment_types as $employment_type)
+                    @if ($job->employment_type_id == $employment_type->id)
+                        <option value="{{ $job->employment_type_id }}" selected>{{ $employment_type->name }}</option>
+                    @else
+                        <option value="{{ $employment_type->id }}">
+                            {{ $employment_type->name }}</option>
+                    @endif
                 @endforeach
             </select>
         </div>
