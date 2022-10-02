@@ -1,13 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\Request;
-use App\Models\Message;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Entry;
-use Illuminate\Support\Str;
+use App\Models\User;
+use App\Models\Job;
+use App\Models\Message;
 
-class MessageController extends Controller
+class EntryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +20,19 @@ class MessageController extends Controller
      */
     public function index()
     {
+        $entries = Entry::all();
+        $companies = Company::all();
+        $jobs = Job::all();
         $messages = Message::all();
-        return view('message/index', [
-            'messages' => $messages,
-        ]);
+        return view(
+            'user.entry.index',
+            [
+                'entries' => $entries,
+                'companies' => $companies,
+                'jobs' => $jobs,
+                'messages' => $messages,
+            ]
+        );
     }
 
     /**
@@ -35,29 +48,12 @@ class MessageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  int  $id
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $input = $request->all();
-        $message = 1;
-        $entry = Entry::select('user_id');
-
-        Message::create([
-            // 'send_by' => $request->send_by,
-            // 'receipt_by' => $request->receipt_by,
-            'user_id' => $entry,
-            'company_id' => 1,
-            'content' => $request->content,
-        ]);
-        return redirect()->route(
-            'user.message.show',
-            compact([
-                'message',
-            ])
-        );
+        //
     }
 
     /**
@@ -66,18 +62,9 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show($id)
     {
-        $messages = Message::all();
-        $entry = Entry::findOrFail($id);
-
-        return view(
-            'message.show',
-            compact([
-                'messages',
-                'entry',
-            ])
-        );
+        //
     }
 
     /**

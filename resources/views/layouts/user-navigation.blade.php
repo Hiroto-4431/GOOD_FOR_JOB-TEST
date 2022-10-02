@@ -11,8 +11,7 @@
             <a href="{{ url('/job') }}" class="text-sm text-black-700 dark:text-black-500 underline pb-2">求人一覧</a>
         </div>
         <div class="mr-4">
-            <a href="{{ url('/message') }}"
-                class="text-sm text-black-700 dark:text-black-500 underline pb-2">メッセージ一覧</a>
+            <a href="{{ url('/entry') }}" class="text-sm text-black-700 dark:text-black-500 underline pb-2">エントリー一覧</a>
         </div>
         @if (Route::has('user.login'))
             <div class="">

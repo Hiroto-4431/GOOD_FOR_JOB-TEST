@@ -15,10 +15,17 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->string('content');
-            // $table->integer('room');
-            $table->integer('user_id');
-            $table->integer('company_id');
+            $table->string('content')->nullable();
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('company_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            // $table->integer('send_by');
+            // $table->integer('receipt_by');
             $table->timestamps();
         });
     }

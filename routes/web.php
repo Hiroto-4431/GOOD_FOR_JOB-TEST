@@ -5,6 +5,7 @@ use App\Http\Controllers\User\JobController;
 use App\Http\Controllers\User\CompanyController;
 
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\User\EntryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,4 +37,5 @@ Route::middleware('auth:users')->group(function () {
     });
 
     Route::resource('/message', MessageController::class);
+    Route::resource('/entry', EntryController::class);
 });
