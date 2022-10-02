@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View as FacadesView;
 use InterventionImage;
+use Illuminate\Support\Str;
 
 class JobController extends Controller
 {
@@ -40,23 +41,22 @@ class JobController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $jobs = Job::select('id', 'title', 'company_id', 'message', 'occupation_id', 'employment_type_id', 'access', 'salary', 'job_description', 'status')->paginate(3);
-
-
+        $jobs = Job::where('company_id', Auth::id())->paginate(5);
         $occupations = Occupation::all();
-        // $entries = Entry::all();
-        $entry_count = Entry::where('job_id', 1)->count();
-        // dd($job);
+
+        $test = 1;
+        $entry_count = Entry::where('job_id', $test)->count();
         return view(
             'company.job.index',
             compact(
                 'jobs',
                 'occupations',
-                'entry_count'
+                'entry_count',
             )
         );
     }
@@ -105,38 +105,29 @@ class JobController extends Controller
         ]);
 
         $companyId = Auth::id();
-        // $imageFile = $request->image;
-        // if (!is_null($imageFile) && $imageFile->isValid()) {
-        // ↓リサイズなしの場合
-        // Storage::putFile('public/job', $imageFile);
 
-        // ↓リサイズありの場合
-        // $fileName = uniqid(rand() . '_');
-        // $extension = $imageFile->extension();
-        // $fileNameToStore = $fileName . '.' . $extension;
-        // $resizedImage = InterventionImage::make($imageFile)->resize(1920, 1080)->encode();
-        // dd($imageFile, $resizedImage);
-
-        // Storage::put('public/job/', $fileNameToStore, $resizedImage);
-        // }
-        $document = $request->image;
-        // $document->store('public');
+        $file = $request->file('image');
+        $extension = $file->getClientOriginalExtension();
+        $file_token = Str::random(32);
+        $filename = $file_token . '.' . $extension;
+        $request->image->storeAs('public/job', $filename);
         Job::create([
             'company_id' => $companyId,
             'title' => $request->title,
             'message' => $request->message,
             'occupation_id' => $request->occupation_id,
             'employment_type_id' => $request->employment_type_id,
-            'image' => $request->image,
+            'image' => $filename,
             'access' => $request->access,
             'salary' => $request->salary,
             // 'feature_id' => 1,
             'job_description' => $request->job_description,
             'status' => $request->status,
         ]);
-        $job = new Job;
-        $job->features()->sync($request->feature_ids);
 
+
+        // $job->features()->sync($request->feature_ids);
+        // dd($request->image->hashName());
 
 
 
@@ -169,6 +160,9 @@ class JobController extends Controller
         // $features = Feature::all();
         // $jobs = Job::all();
         $job = Job::findOrFail($id);
+
+        // dd($job->image->hashName());
+
         return view(
             'company.job.edit',
             compact(

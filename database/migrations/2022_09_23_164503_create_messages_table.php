@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->string('content')->nullable();
+            $table->foreignId('entry_id')
+                ->constrained();
             $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('cascade')

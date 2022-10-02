@@ -72,7 +72,14 @@
         <div class="mt-4 flex items-center">
             <x-label :value="__('イメージ')" class="w-1/4 text-black text-base" />
             {{-- <x-thumbnail :image="$job->image" type="job" class="block mt-1 w-3/4" /> --}}
-            <img src="{{ asset('storage' . $job->image) }}" alt="">
+            <div class="block mt-1 w-3/4">
+                @if (empty($job->image))
+                    <img src="{{ asset('images/NoImage.png') }}" alt="">
+                @else
+                    <img src="{{ asset('storage/job/' . $job->image) }}" alt="" class="w-3/4 h-full">
+                @endif
+            </div>
+
         </div>
         <div class="mt-4 flex items-center">
             <x-label for="image" :value="__('')" class="w-1/4 text-black text-base" />

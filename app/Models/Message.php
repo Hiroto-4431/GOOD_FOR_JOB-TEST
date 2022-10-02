@@ -15,5 +15,6 @@ class Message extends Model
         // 'receipt_by',
         'user_id',
         'company_id',
+        'entry_id',
     ];
 }

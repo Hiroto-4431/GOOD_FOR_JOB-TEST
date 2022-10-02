@@ -58,6 +58,7 @@
                         </td>
                         <td class="text-center p-4 w-2/12">
                             <p>
+
                                 {{ $entry_count }}
                             </p>
                         </td>

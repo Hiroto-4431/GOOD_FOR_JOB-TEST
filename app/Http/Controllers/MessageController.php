@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Message;
 use App\Models\Entry;
+use Illuminate\Container\EntryNotFoundException;
 use Illuminate\Support\Str;
 
 class MessageController extends Controller
@@ -39,7 +40,7 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         $input = $request->all();
         $message = 1;
@@ -48,6 +49,7 @@ class MessageController extends Controller
         Message::create([
             // 'send_by' => $request->send_by,
             // 'receipt_by' => $request->receipt_by,
+            'entry_id' => 1,
             'user_id' => $entry,
             'company_id' => 1,
             'content' => $request->content,
@@ -56,6 +58,7 @@ class MessageController extends Controller
             'user.message.show',
             compact([
                 'message',
+
             ])
         );
     }
@@ -71,11 +74,13 @@ class MessageController extends Controller
         $messages = Message::all();
         $entry = Entry::findOrFail($id);
 
+
         return view(
             'message.show',
             compact([
                 'messages',
                 'entry',
+
             ])
         );
     }

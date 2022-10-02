@@ -5,6 +5,7 @@
         </h1>
     </x-slot>
     {{-- コンテンツ --}}
+    <p>{{ $entry->id }}</p>
     <div class="bg-slate-200 border-2 border-solid border-inherit p-8 relative">
         <div class="mb-20">
             @foreach ($messages as $message)
@@ -17,11 +18,11 @@
         <div class="w-3/4 absolute bottom-2 left-1/2 -translate-x-2/4 flex justify-between items-center">
             <form method="POST"
                 @if (auth('users')->user()) action="{{ route('user.message.store', ['message' => $entry->id]) }}" @endif
-                @if (auth('companies')->user()) action="{{ route('company.message.store') }}" @endif
+                @if (auth('companies')->user()) action="{{ route('company.message.store', ['message' => $entry->id]) }}" @endif
                 class="block w-full">
                 @csrf
 
-
+                <input name="entry_id" type="hidden" value="{{ $entry->id }}">
                 <input name="user_id" type="hidden" value="2">
                 <input name="company_id" type="hidden" value="1">
 

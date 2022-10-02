@@ -32,6 +32,51 @@ class EntrySeeder extends Seeder
                 'job_id' => 3,
                 'status' => 1,
             ],
+            [
+                'user_id' => 1,
+                'job_id' => 1,
+                'status' => 1,
+            ],
+            [
+                'user_id' => 1,
+                'job_id' => 1,
+                'status' => 1,
+            ],
+            [
+                'user_id' => 1,
+                'job_id' => 1,
+                'status' => 1,
+            ],
+            [
+                'user_id' => 1,
+                'job_id' => 1,
+                'status' => 1,
+            ],
+            [
+                'user_id' => 2,
+                'job_id' => 2,
+                'status' => 1,
+            ],
+            [
+                'user_id' => 3,
+                'job_id' => 3,
+                'status' => 1,
+            ],
+            [
+                'user_id' => 1,
+                'job_id' => 1,
+                'status' => 1,
+            ],
+            [
+                'user_id' => 2,
+                'job_id' => 2,
+                'status' => 1,
+            ],
+            [
+                'user_id' => 3,
+                'job_id' => 3,
+                'status' => 1,
+            ],
 
         ]);
     }
