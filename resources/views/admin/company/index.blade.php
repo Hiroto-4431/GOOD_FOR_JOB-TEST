@@ -16,9 +16,9 @@
                 <th class="text-center p-4 w-5/12">
                     <p>企業名</p>
                 </th>
-                <th class="text-center p-4 w-2/12">
+                {{-- <th class="text-center p-4 w-2/12">
                     <p>求人数</p>
-                </th>
+                </th> --}}
                 <th class="text-center p-4 w-3/12">
                     <p>登録日</p>
                 </th>
@@ -34,29 +34,34 @@
                     <td class="text-center p-4 w-5/12">
                         <p>{{ $company->name }}</p>
                     </td>
-                    <td class="text-center p-4 w-2/12">
+                    {{-- <td class="text-center p-4 w-2/12">
                         <p>00</p>
-                    </td>
+                    </td> --}}
                     <td class="text-center p-4 w-3/12">
                         <p>{{ $company->created_at }}</p>
                     </td>
                     <td class="block text-center p-4 w-3/12">
-                        {{-- <button onclick="location.href='{{ route('company.job.edit', ['job' => $job->id]) }}'"
-                            class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-base text-white uppercase tracking-widest hover:bg-red-400 active:bg-red-600 focus:outline-none focus:border-red-600 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">編集</button> --}}
-                        {{-- <form id="delete_{{ $company->id }}"
-                            action="{{ route('admin.company.destroy', ['company' => $company->id]) }}" method="POST"
+                        <form id="delete_{{ $company->id }}"
+                            action="{{ route('admin.job.destroy', ['job' => $job->id]) }}" method="POST"
                             class="inline">
                             @csrf
                             @method('delete')
-                            <a href="#" data-id="{{ $company->id }}" onclick="deletePost(this)"
+                            <a href="#" data-id="{{ $job->id }}" onclick="deletePost(this)"
                                 class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-base text-white uppercase tracking-widest hover:bg-blue-400 active:bg-blue-600 focus:outline-none focus:border-red-600 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">削除</a>
-                        </form> --}}
-                        ----
+                        </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    <script>
+        function deletePost(e) {
+            'use strict';
+            if (confirm('本当に削除してもよろしいですか？')) {
+                document.getElementById('delete_' + e.dataset.id).submit();
+            }
+        }
+    </script>
 
 
 </x-app-layout>

@@ -7,15 +7,8 @@ use App\Models\EmploymentType;
 use App\Models\Occupation;
 use App\Models\Feature;
 use App\Models\Job;
-use App\Models\Entry;
-use App\Models\Company;
-use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\View as FacadesView;
-use InterventionImage;
 use Illuminate\Support\Str;
 
 class JobController extends Controller
@@ -54,7 +47,6 @@ class JobController extends Controller
             compact(
                 'jobs',
                 'occupations',
-
             )
         );
     }
@@ -98,7 +90,6 @@ class JobController extends Controller
             'employment_type_id' => ['required'],
             'access' => ['required'],
             'salary' => ['required'],
-            // 'feature_id' => ['required'],
             'job_description' => ['required'],
         ]);
 
@@ -183,7 +174,6 @@ class JobController extends Controller
         $job->title = $request->title;
         $job->message = $request->message;
         $job->occupation_id = $request->occupation_id;
-        // $job->employment_type = $request->employment_type;
         $job->access = $request->access;
         $job->salary = $request->salary;
         $job->job_description = $request->job_description;

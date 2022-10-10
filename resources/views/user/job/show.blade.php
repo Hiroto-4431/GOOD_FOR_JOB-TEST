@@ -80,16 +80,7 @@
                         <p>{{ $job->salary }}</p>
                     </td>
                 </tr>
-                <tr class="block flex p-4">
-                    <th class="block w-1/4">
-                        <p>特徴</p>
-                    </th>
-                    <td class="block w-3/4">
-                        <p>
-                            ----
-                        </p>
-                    </td>
-                </tr>
+
                 <tr class="block flex p-4 bg-gray-200">
                     <th class="block w-1/4">
                         <p>仕事内容</p>

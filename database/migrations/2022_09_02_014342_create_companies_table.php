@@ -24,10 +24,6 @@ return new class extends Migration
             $table->string('president_last_name');
             $table->string('president_family_name_read');
             $table->string('president_last_name_read');
-            // $table->foreignId('prefecture_id')->constrained();
-            // $table->foreignId('city_id')->constrained();
-            // $table->foreignId('address_id')->constrained();
-            // $table->string('image');
             $table->ipAddress('phone');
             $table->integer('employee');
             $table->rememberToken();

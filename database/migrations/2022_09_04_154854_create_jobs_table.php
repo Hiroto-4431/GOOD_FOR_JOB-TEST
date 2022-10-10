@@ -24,12 +24,8 @@ return new class extends Migration
             $table->foreignId('occupation_id')->constrained();
             $table->foreignId('employment_type_id')->constrained();
             $table->string('image')->nullable();
-            // $table->foreignId('prefecture_id')->constrained();
-            // $table->foreignId('city_id')->constrained();
-            // $table->foreignId('address_id')->constrained();
             $table->text('access');
             $table->text('salary');
-            // $table->foreignId('feature_id')->constrained();
             $table->text('job_description');
             $table->boolean('status');
             $table->timestamps();

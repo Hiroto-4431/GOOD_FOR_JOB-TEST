@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
+
 class CompanyController extends Controller
 {
     public function __construct()
@@ -92,6 +93,7 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Company::findOrFail($id)->delete();
+        return redirect()->route('admin.job.index');
     }
 }
