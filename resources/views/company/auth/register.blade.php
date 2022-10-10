@@ -84,42 +84,8 @@
                             {{ $industry->name }}</option>
                     @endforeach
                 </select>
-                {{-- <x-input id="industry_id" class="block mt-1" type="checkbox" name="industry_id" :value="old('industry_id')"
-                    required />
-                @foreach ($industries as $industry)
-                    <label for="{{ $industry->id }}" name="industry_id" value="{{ $industry->id }}">
-                        <input type="radio" id="{{ $industry->id }}">
-                        {{ $industry->name }}
-                    </label>
-                @endforeach --}}
             </div>
 
-            <!-- 住所 -->
-            {{-- <div class="mt-4">
-                <x-label for="prefecture" :value="__('住所')" />
-                <select id="prefecture"
-                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                    name="prefecture">
-                    <option value="" selected disabled>都道府県</option>
-                    @foreach ($prefectures as $prefecture)
-                        <option value="{{ $prefecture->id }}">{{ $prefecture->name }}</option>
-                    @endforeach
-                </select>
-
-                <x-label for="city" :value="__('')" />
-                <select id="city"
-                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                    name="city">
-                    <option value="" selected disabled>市区町村</option>
-                    @foreach ($cities as $city)
-                        <option value="{{ $city->id }}">{{ $city->name }}</option>
-                    @endforeach
-                </select>
-
-                <x-label for="address" :value="__('')" />
-                <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')"
-                    placeholder="町名番地" required autofocus />
-            </div> --}}
 
             <!-- 電話番号 -->
             <div class="mt-4">

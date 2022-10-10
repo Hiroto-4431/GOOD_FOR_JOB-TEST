@@ -60,8 +60,7 @@
                         </p>
                     </td>
                     <td class="block text-center p-4 w-3/12">
-                        <button onclick="location.href='{{ route('company.job.edit', ['job' => $job->id]) }}'"
-                            class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-base text-white uppercase tracking-widest hover:bg-red-400 active:bg-red-600 focus:outline-none focus:border-red-600 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">編集</button>
+
                         <form id="delete_{{ $job->id }}"
                             action="{{ route('admin.company.destroy', ['company' => $job->id]) }}" method="POST"
                             class="inline">
@@ -76,6 +75,14 @@
             @endforeach
         </tbody>
     </table>
+    <script>
+        function deletePost(e) {
+            'use strict';
+            if (confirm('本当に削除してもよろしいですか？')) {
+                document.getElementById('delete_' + e.dataset.id).submit();
+            }
+        }
+    </script>
 
 
 </x-app-layout>

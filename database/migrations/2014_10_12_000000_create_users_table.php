@@ -23,9 +23,6 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->ipAddress('phone');
-            // $table->foreignId('prefecture_id')->constrained();
-            // $table->foreignId('city_id')->constrained()-;
-            // $table->foreignId('address_id')->constrained();
             $table->rememberToken();
             $table->timestamps();
         });

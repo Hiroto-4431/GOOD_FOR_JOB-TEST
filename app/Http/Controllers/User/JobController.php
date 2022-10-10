@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\EmploymentType;
 use App\Models\Job;
+use App\Models\User;
 use App\Models\Entry;
 use App\Models\Occupation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EntryMail;
 
 class JobController extends Controller
 {
@@ -111,7 +114,7 @@ class JobController extends Controller
         //
     }
 
-    public function entry($id)
+    public function entry(Request $request, $id)
     {
         $job = Job::findOrFail($id);
         $entry = new Entry;
@@ -122,15 +125,9 @@ class JobController extends Controller
         $entry->save();
 
 
-        // $input = $request->all();
-        // $user_id = Auth::id();
-        // $job_id = Job::select('id');
-        // $job = Job::findOrFail($id);
-        // Entry::create([
-        //     'user_id' => $user_id,
-        //     'job_id' => $job->id,
-        //     // 'status' => 1,
-        // ]);
+        $mailAddress =  Auth::user()->email;
+        Mail::to($mailAddress)
+            ->send(new EntryMail());
 
         return redirect()->route('user.job.show', ['job' => $job->id])->with('message', 'エントリーされました。');
     }

@@ -7,6 +7,8 @@ use App\Models\Job;
 use App\Models\Company;
 use App\Models\Occupation;
 use Illuminate\Http\Request;
+use App\Models\EmploymentType;
+use App\Models\Feature;
 
 class JobController extends Controller
 {
@@ -93,6 +95,7 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Job::findOrFail($id)->delete();
+        return redirect()->route('admin.job.index');
     }
 }
