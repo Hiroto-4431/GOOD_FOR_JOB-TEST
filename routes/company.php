@@ -12,7 +12,7 @@ use App\Http\Controllers\Company\Auth\VerifyEmailController;
 use App\Http\Controllers\PrefectureCityController;
 use App\Http\Controllers\Company\JobController;
 use App\Http\Controllers\Company\EntryController;
-use App\Http\Controllers\MessageController;
+use App\Http\Controllers\Company\MessageController;
 
 
 /*
@@ -83,5 +83,5 @@ Route::middleware('auth:companies')->group(function () {
 
   Route::resource('job', JobController::class);
   Route::resource('entry', EntryController::class);
-  Route::resource('/message', MessageController::class);
+  Route::resource('message', MessageController::class);
 });

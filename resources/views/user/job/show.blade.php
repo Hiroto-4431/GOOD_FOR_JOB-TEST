@@ -17,10 +17,10 @@
         <x-flash-message status="info" />
 
         <div class="mb-8">
-            @if (empty($company->image))
+            @if (empty($job->image))
                 <img src="{{ asset('images/NoImage.png') }}" alt="">
             @else
-                <img src="" alt="">
+                <img src="{{ asset('storage/job/' . $job->image) }}" alt="">
             @endif
         </div>
 
@@ -85,7 +85,9 @@
                         <p>特徴</p>
                     </th>
                     <td class="block w-3/4">
-                        <p>---</p>
+                        <p>
+                            ----
+                        </p>
                     </td>
                 </tr>
                 <tr class="block flex p-4 bg-gray-200">

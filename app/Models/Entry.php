@@ -17,4 +17,9 @@ class Entry extends Model
     {
         return $this->hasMany(Job::class);
     }
+
+    public function message()
+    {
+        return $this->belongsTo(Message::class);
+    }
 }

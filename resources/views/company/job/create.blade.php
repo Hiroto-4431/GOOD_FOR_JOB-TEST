@@ -81,12 +81,12 @@
 
         {{-- 特徴 --}}
         <div class="mt-4 flex items-center">
-            <x-label for="feature_id" :value="__('特徴')" class="w-1/4 text-black text-base" />
+            <x-label :value="__('特徴')" class="w-1/4 text-black text-base" />
             <div class="w-3/4">
                 @foreach ($features as $feature)
-                    <label for="{{ $feature->id }}" class="inline-block cursor-pointer">
-                        <input type="checkbox" id="{{ $feature->id }}"
-                            name="feature_id[]"><span>{{ $feature->name }}</span>
+                    <label for="feature_{{ $feature->id }}" class="inline-block cursor-pointer">
+                        <input type="checkbox" id="feature_{{ $feature->id }}" name="feature_ids[]"
+                            value="{{ $feature->id }}"><span>{{ $feature->name }}</span>
                     </label>
                 @endforeach
             </div>

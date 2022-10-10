@@ -50,12 +50,7 @@
             <x-label for="employment_type" :value="__('雇用形態')" class="w-1/4 text-black text-base" />
             <select name="employment_type_id" id="employment_type_id"
                 class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-3/4">
-                {{-- <option class="hidden" selected disabled>雇用形態</option> --}}
-                {{-- @foreach ($employment_types as $employment_type)
-                    <option value="{{ $employment_type->id }}"
-                        {{ old('employment_type') == $employment_type->id ? 'selected' : '' }}>
-                        {{ $employment_type->name }}</option>
-                @endforeach --}}
+
 
                 @foreach ($employment_types as $employment_type)
                     @if ($job->employment_type_id == $employment_type->id)
@@ -104,21 +99,23 @@
         </div>
 
         {{-- 特徴 --}}
-        {{-- <div class="mt-4 flex items-center">
-            <x-label for="feature_id" :value="__('特徴')" class="w-1/4 text-black text-base" />
+        <div class="mt-4 flex items-center">
+            <x-label :value="__('特徴')" class="w-1/4 text-black text-base" />
             <div class="w-3/4">
                 @foreach ($features as $feature)
                     <label for="{{ $feature->id }}" class="inline-block">
-                        <input type="checkbox" id="{{ $feature->id }}"
-                            name="feature_id[]"><span>{{ $feature->name }}</span>
+                        <input type="checkbox" id="{{ $feature->id }}" name="feature_ids[]"
+                            value="{{ $feature->id }}" {{ $job->features->contains($feature->id) ? 'checked' : '' }}>
+                        <span>{{ $feature->name }}</span>
                     </label>
                 @endforeach
             </div>
-        </div> --}}
+        </div>
 
 
         {{-- 仕事内容 --}}
-        <div class="mt-4 flex items-center">
+        <div class="mt-4
+                            flex items-center">
             <x-label for="job_description" :value="__('仕事内容')" class="w-1/4 text-black text-base" />
             <textarea name="job_description" id="job_description"
                 class="block mt-1 w-3/4 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"

@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
 use Illuminate\Http\Request;
+use App\Models\Message;
+use App\Models\Entry;
 
-class CompanyController extends Controller
+class MessageController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admins');
+        $this->middleware('auth:companies');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -20,13 +20,10 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
-        return view(
-            'admin.company.index',
-            [
-                'companies' => $companies,
-            ]
-        );
+        $messages = Message::all();
+        return view('message/index', [
+            'messages' => $messages,
+        ]);
     }
 
     /**
@@ -47,7 +44,21 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $entry_id = $request->entry_id;
+
+        Message::create([
+            'entry_id' => $entry_id,
+            'send_by' => $request->send_by,
+            'receive_by' => $request->receive_by,
+            'content' => $request->content,
+        ]);
+        return redirect()->route(
+            'company.message.show',
+            [
+                'message' => $entry_id,
+            ]
+        );
     }
 
     /**
@@ -56,9 +67,19 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        $messages = Message::all();
+        $entry = Entry::findOrFail($id);
+
+
+        return view(
+            'message.show',
+            compact([
+                'messages',
+                'entry',
+            ])
+        );
     }
 
     /**

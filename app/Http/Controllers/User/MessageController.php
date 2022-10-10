@@ -1,15 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Message;
 use App\Models\Entry;
-use Illuminate\Container\EntryNotFoundException;
-use Illuminate\Support\Str;
 
 class MessageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:users');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,30 +39,25 @@ class MessageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  int  $id
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $input = $request->all();
-        $message = 1;
-        $entry = Entry::select('user_id');
+        $entry_id = $request->entry_id;
 
         Message::create([
-            // 'send_by' => $request->send_by,
-            // 'receipt_by' => $request->receipt_by,
-            'entry_id' => 1,
-            'user_id' => $entry,
-            'company_id' => 1,
+            'entry_id' => $entry_id,
+            'send_by' => $request->send_by,
+            'receive_by' => $request->receive_by,
             'content' => $request->content,
         ]);
         return redirect()->route(
             'user.message.show',
-            compact([
-                'message',
-
-            ])
+            [
+                'message' => $entry_id,
+            ]
         );
     }
 
@@ -80,7 +78,6 @@ class MessageController extends Controller
             compact([
                 'messages',
                 'entry',
-
             ])
         );
     }

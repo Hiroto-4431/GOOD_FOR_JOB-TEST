@@ -58,8 +58,8 @@
                         </td>
                         <td class="text-center p-4 w-2/12">
                             <p>
+                                {{ $job->entries->count() }}
 
-                                {{ $entry_count }}
                             </p>
                         </td>
                         <td class="block text-left p-4 w-3/12">

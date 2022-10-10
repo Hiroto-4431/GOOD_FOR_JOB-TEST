@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\JobController;
 use App\Http\Controllers\User\CompanyController;
 
-use App\Http\Controllers\MessageController;
+use App\Http\Controllers\User\MessageController;
 use App\Http\Controllers\User\EntryController;
 /*
 |--------------------------------------------------------------------------

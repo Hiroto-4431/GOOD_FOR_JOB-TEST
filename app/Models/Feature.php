@@ -11,6 +11,6 @@ class Feature extends Model
 
     public function jobs()
     {
-        return $this->belongsToMany(Job::class);
+        return $this->belongsToMany(Job::class, 'feature_job')->withPivot(['id', 'job_id', 'feature_id']);
     }
 }

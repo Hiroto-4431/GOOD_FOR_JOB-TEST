@@ -10,7 +10,7 @@
                         @if (empty($job->image))
                             <img src="{{ asset('images/NoImage.png') }}" alt="">
                         @else
-                            <img src="" alt="">
+                            <img src="{{ asset('storage/job/' . $job->image) }}">
                         @endif
                     </div>
                     <!--テキスト-->

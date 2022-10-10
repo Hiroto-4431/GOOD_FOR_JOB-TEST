@@ -18,20 +18,24 @@ class MessageSeeder extends Seeder
         //メッセージ
         DB::table('messages')->insert([
             [
-                'content' => 'メッセージ1',
-                'user_id' => 1,
-                'company_id' => 1,
+                'entry_id' => 1,
+                'content' => 'メッセージ1-1',
+                'send_by' => 1,
+                'receive_by' => 2,
             ],
             [
-                'content' => 'メッセージ2',
-                'user_id' => 2,
-                'company_id' => 2,
+                'entry_id' => 1,
+                'content' => 'メッセージ1-2',
+                'send_by' => 1,
+                'receive_by' => 2,
             ],
             [
-                'content' => 'メッセージ3',
-                'user_id' => 3,
-                'company_id' => 3,
+                'entry_id' => 1,
+                'content' => 'メッセージ1-3',
+                'send_by' => 2,
+                'receive_by' => 1,
             ],
+
         ]);
     }
 }

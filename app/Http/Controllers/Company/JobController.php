@@ -49,14 +49,12 @@ class JobController extends Controller
         $jobs = Job::where('company_id', Auth::id())->paginate(5);
         $occupations = Occupation::all();
 
-        $test = 1;
-        $entry_count = Entry::where('job_id', $test)->count();
         return view(
             'company.job.index',
             compact(
                 'jobs',
                 'occupations',
-                'entry_count',
+
             )
         );
     }
@@ -111,23 +109,22 @@ class JobController extends Controller
         $file_token = Str::random(32);
         $filename = $file_token . '.' . $extension;
         $request->image->storeAs('public/job', $filename);
-        Job::create([
-            'company_id' => $companyId,
-            'title' => $request->title,
-            'message' => $request->message,
-            'occupation_id' => $request->occupation_id,
-            'employment_type_id' => $request->employment_type_id,
-            'image' => $filename,
-            'access' => $request->access,
-            'salary' => $request->salary,
-            // 'feature_id' => 1,
-            'job_description' => $request->job_description,
-            'status' => $request->status,
-        ]);
 
 
-        // $job->features()->sync($request->feature_ids);
-        // dd($request->image->hashName());
+        $job = new Job;
+        $job->company_id = $companyId;
+        $job->title = $request->title;
+        $job->message = $request->message;
+        $job->occupation_id = $request->occupation_id;
+        $job->employment_type_id = $request->employment_type_id;
+        $job->image = $filename;
+        $job->access = $request->access;
+        $job->salary = $request->salary;
+        $job->job_description = $request->job_description;
+        $job->status = $request->status;
+        $job->save();
+
+        $job->features()->sync($request->feature_ids);
 
 
 
@@ -157,19 +154,17 @@ class JobController extends Controller
     {
         $occupations = Occupation::all();
         $employment_types = EmploymentType::all();
-        // $features = Feature::all();
-        // $jobs = Job::all();
+        $features = Feature::all();
+
         $job = Job::findOrFail($id);
 
-        // dd($job->image->hashName());
 
         return view(
             'company.job.edit',
             compact(
                 'occupations',
                 'employment_types',
-                // 'features',
-                // 'jobs',
+                'features',
                 'job'
             )
         );

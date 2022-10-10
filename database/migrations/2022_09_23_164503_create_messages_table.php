@@ -18,16 +18,16 @@ return new class extends Migration
             $table->string('content')->nullable();
             $table->foreignId('entry_id')
                 ->constrained();
-            $table->foreignId('user_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('company_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            // $table->integer('send_by');
-            // $table->integer('receipt_by');
+            // $table->foreignId('user_id')
+            //     ->constrained()
+            //     ->onUpdate('cascade')
+            //     ->onDelete('cascade');
+            // $table->foreignId('company_id')
+            //     ->constrained()
+            //     ->onUpdate('cascade')
+            //     ->onDelete('cascade');
+            $table->integer('send_by');
+            $table->integer('receive_by');
             $table->timestamps();
         });
     }

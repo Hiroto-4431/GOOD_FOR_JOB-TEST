@@ -24,7 +24,6 @@ class Job extends Model
         'image',
         'access',
         'salary',
-        // 'feature_id',
         'job_description',
         'status'
     ];
@@ -41,7 +40,7 @@ class Job extends Model
 
     public function features()
     {
-        return $this->belongsToMany(Feature::class);
+        return $this->belongsToMany(Feature::class, 'feature_job')->withPivot(['id', 'job_id', 'feature_id']);
     }
 
     public function occupation()
@@ -49,8 +48,8 @@ class Job extends Model
         return $this->belongsTo(Occupation::class);
     }
 
-    public function entry()
+    public function entries()
     {
-        return $this->belongsTo(Entry::class);
+        return $this->hasMany(Entry::class);
     }
 }

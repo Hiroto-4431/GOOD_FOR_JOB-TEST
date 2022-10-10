@@ -10,11 +10,19 @@ class Message extends Model
     use HasFactory;
 
     protected $fillable = [
-        'content',
-        // 'send_by',
-        // 'receipt_by',
-        'user_id',
-        'company_id',
         'entry_id',
+        'content',
+        'send_by',
+        'receive_by',
     ];
+    protected $hidden = [
+        'entry_id',
+        'send_by',
+        'receive_by',
+    ];
+
+    public function entries()
+    {
+        return $this->belongsTo(Entry::class);
+    }
 }
